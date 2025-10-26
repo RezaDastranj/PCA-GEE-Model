@@ -1,0 +1,12 @@
+---
+title: "About"
+---
+
+
+We propose a parsimonious and better-fitting framework for mortality forecasting that incorporates the first principal component of age-specific death rates as a covariate in a generalized estimating equations setting. The model captures both serial and cross-age correlations in single- and multi-population panels. Unlike existing studies, which typically rely on customized optimization procedures and bespoke code, our specification is statistically transparent, straightforward to interpret, and directly estimable with standard statistical packages in software such as R. Model selection based on the quasi-likelihood under the independence model criterion favors an autoregressive AR(1) correlation structure, consistent with the empirical finding that correlations in mortality rates decay over time. Using data from the Human Mortality Database, we show that the proposed model achieves lower out-of-sample forecast errors and more stable long-horizon dynamics than the Lee–Carter and Li–Lee benchmarks.
+
+Keywords: Mortality forecasting, Longitudinal analysis, Generalized estimating equations, Principal component analysis, Random walks with drift.
+
+For more details, refer to the related paper: Forecasting Mortality Rates with a Stochastic PCA--GEE Model: An Application to Solvency Capital Requirements:
+
+<https://ssrn.com/abstract=4703584>
