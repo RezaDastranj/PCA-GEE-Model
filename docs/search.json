@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Forecasting Mortality Rates with a Stochastic PCA–GEE Model: An Application to Solvency Capital Requirements",
+    "section": "",
+    "text": "First, load the packages to be used\n\nlibrary(dplyr)          # Data manipulation and transformation\nlibrary(ggplot2)        # Data visualization\nlibrary(tidyverse)      # Collection of tidyverse packages\nlibrary(forecast)       # Time series forecasting\nlibrary(geepack)        # Generalized Estimating Equation Package"
+  },
+  {
+    "objectID": "index.html#list-of-dataset-filenames",
+    "href": "index.html#list-of-dataset-filenames",
+    "title": "Forecasting Mortality Rates with a Stochastic PCA–GEE Model: An Application to Solvency Capital Requirements",
+    "section": "List of Dataset Filenames",
+    "text": "List of Dataset Filenames\n\n# log(q_{cgxt}) values for the years 1991 to 2021\nload(\"dat.RData\")\n# log(q_{cgxt}) values for the years 1991 to 2010\nload(\"dattrn.RData\")\n\n\nM0 &lt;- dat\nMB0 &lt;- do.call(cbind, M0)\n\n\nt &lt;- 20\n\nM &lt;- dattrn\nMB &lt;- do.call(cbind, M)"
+  },
+  {
+    "objectID": "index.html#plot-of-k_ct",
+    "href": "index.html#plot-of-k_ct",
+    "title": "Forecasting Mortality Rates with a Stochastic PCA–GEE Model: An Application to Solvency Capital Requirements",
+    "section": "Plot of \\(k_{ct}\\)",
+    "text": "Plot of \\(k_{ct}\\)\n\n# Create a new data frame 'ASDRsnw' by converting the 'year' column to numeric\nASDRsnw &lt;- ASDRs %&gt;%\n  mutate(year = as.numeric(as.character(year)))\n\n\n# Rename the 9th column to \"PC1\"\ncolnames(ASDRsnw)[9] &lt;- \"PC1\"\n\n# Generate a ggplot with points and lines\nggplot(ASDRsnw) +\n  # Add points to the plot with year on the x-axis, kc1 on the y-axis, and color based on 'PC1'\n  geom_point(aes(x = year, y = kc1, color = PC1), size = 1.6) +\n  \n  # Add lines to the plot connecting the points with the same x and y aesthetics\n  geom_line(aes(x = year, y = kc1, color = PC1), linewidth = .8) +\n  \n  # Manually set the colors for the 'PC1' groups\n  scale_color_manual(values = c(\"Group[0,14]\" = \"red\", \"Group[15,40]\" = \"green\", \"Group[41,90]\" = \"blue\")) +\n  \n  # Set the labels for the x and y axes\n  xlab(\"Year\") +  \n  ylab(\"Value\") + \n  \n  # Create a facet grid for the plot by 'Country'\n  facet_grid(~Country) +\n  \n  # Apply a clean, white background theme to the plot\n  theme_bw() +\n  \n  # Customize the legend to have larger points\n  guides(color = guide_legend(override.aes = list(size = 3))) +\n  \n  # Rotate the x-axis text labels to be vertical and adjust their alignment\n  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +\n  \n  # Set the font size of the x-axis text labels\n  theme(axis.text.x = element_text(size = 20)) +\n  \n  # Set the font size of the y-axis text labels\n  theme(axis.text.y = element_text(size = 25)) +\n  \n  # Set the font size of the legend text\n  theme(legend.text = element_text(size = 35)) +\n  \n  # Set the font size of the axis titles\n  theme(axis.title = element_text(size = 25)) +\n  \n  # Set the font size of the strip text (facet labels)\n  theme(strip.text = element_text(size = 35)) +\n  \n  # Set the font size of the legend title\n  theme(legend.title = element_text(size = 20)) +\n  \n  # Position the legend at the bottom of the plot\n  theme(legend.position = \"bottom\")"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "We propose a parsimonious and better-fitting framework for mortality forecasting that incorporates the first principal component of age-specific death rates as a covariate in a generalized estimating equations setting. The model captures both serial and cross-age correlations in single- and multi-population panels. Unlike existing studies, which typically rely on customized optimization procedures and bespoke code, our specification is statistically transparent, straightforward to interpret, and directly estimable with standard statistical packages in software such as R. Model selection based on the quasi-likelihood under the independence model criterion favors an autoregressive AR(1) correlation structure, consistent with the empirical finding that correlations in mortality rates decay over time. Using data from the Human Mortality Database, we show that the proposed model achieves lower out-of-sample forecast errors and more stable long-horizon dynamics than the Lee–Carter and Li–Lee benchmarks.\nKeywords: Mortality forecasting, Longitudinal analysis, Generalized estimating equations, Principal component analysis, Random walks with drift.\nFor more details, refer to the related paper: Forecasting Mortality Rates with a Stochastic PCA–GEE Model: An Application to Solvency Capital Requirements:\nhttps://ssrn.com/abstract=4703584"
+  }
+]
